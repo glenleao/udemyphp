@@ -1,5 +1,5 @@
 <?php
-
+//teste randomico, onde vai  mostrar o conteudo do BD quando encontrar o que foi pedido
 $condicao = true;
 
 
