@@ -1,5 +1,5 @@
 <?php
-
+// chama a funçao autoload em outra pasta
 function incluirClasses($nomeClasse){
 
 	if(file_exists($nomeClasse.".php") === true){
@@ -7,7 +7,8 @@ function incluirClasses($nomeClasse){
 	}
 
 }
-spl_autoload_register("$incluirClasses");
+
+spl_autoload_register("incluirClasses");
 spl_autoload_register(function($nomeClasse){
 
 	if(file_exists("abstrata" . DIRECTORY_SEPARATOR . $nomeClasse .".php") === true){

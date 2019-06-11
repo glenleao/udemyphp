@@ -19,6 +19,13 @@ class Cachorro extends Animal{
 	}
 }
 
+class Gato extends Animal{
+
+	public function falar(){
+		return "Mia";
+	}
+}
+
 class Passaro extends Animal {
 	public function falar(){
 	return "Canta";
