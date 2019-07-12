@@ -1,9 +1,29 @@
 <?php
-// \r\n -> retorna cursor e nova uma linha
-// arquivo armazenado no servidor e pode capturar varias informações
-$file = fopen("log.txt", "a+");
-fwrite($file, date("d/m/Y H:i:s") . "\r\n");
 
+require_once("config.php");
+
+$sql = new Sql();
+
+$usuarios = $sql->select("SELECT * FROM tb_usuarios ORDER BY deslogin");
+
+$headers = array();
+
+foreach ($usuarios[0] as $key => $value){
+	array_push($headers, ucfirst($key));
+}
+
+$file = fopen("usuarios.csv", "w+");
+fwrite($file, implode(",", $headers) . "\r\n");
+
+foreach ($usuarios as $row){
+	$data = array();
+
+	foreach ($row as $key => $value) {
+		array_push($data, $value);
+	}//end foreach de coluna
+	fwrite($file, implode(",", $data) . "\r\n");
+}//end foreach de linha
 fclose($file);
 
-echo "Arquivo criado com sucesso!";
+
+
